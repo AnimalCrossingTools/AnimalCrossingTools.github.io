@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+			<meta charset="utf-8">
+			<title>Animal Crossing Tools</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<link rel="stylesheet" href="index.css">
+			<script src="https://kit.fontawesome.com/ffa8727b5c.js"></script>
+	</head>
+		
+		
+	<body>
+		<div class="row header">
+			<div class="columnC">
+				<h1 style="text-decoration:underline">Animal Crossing Tools</h1>
+			</div>
+		</div>
+		<div style="margin: 10px 0 15px 0; padding: 0 20px 0 40px" class="row">
+			<div class="columnC">
+				<b>For each tool on this page, you can either fill out the boxes and click calculate, or drag the tool's title (they are bookmarklet links) to your bookmarks bar so you can use the tool without having to visit this website.</b>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<div class ="row" style="margin: 1vw 0 0 2vw">
+				<div class="column">
+					<h2><a href=
+						"javascript:(function(){
+						x = prompt('Please enter: \n - The number of villagers you would keep if they appear, \n - The number of villagers you currently have and, \n - The number of trips, \n - The total number of villagers in the game (optional, if this number is ommitted, 393 will be used)\n Into the input box below IN THAT ORDER, separated by a comma. \n eg: 36, 8, 6, 393');a = x.split(',').map(item=>{return item.trim();});if(a.length<3){alert('you need to enter at least 3 numbers separated by commas')};z=0;a.forEach(num=>{if(isNaN(parseInt(num)) || parseInt(num)<1){z +=1;};});if(z>0){alert('you need to enter at least 3 numbers, greater than 0, separated by commas')}else{if(a.length == 3){a.push(393)}p = a[0]/(a[3]-a[1]);x = 1;N = a[2];tmp1 = (sFact(N)/(sFact(x)*sFact(N-x)))*Math.pow(p, x)*Math.pow((1-p),(N-x));tmp0 = (sFact(N)/(sFact(0)*sFact(N)))*Math.pow(p, 0)*Math.pow((1-p),(N));confirm(`You have a ${(tmp1*100).toFixed(2)}% chance of finding a villager you want in ${a[2]} trips. \n You also have a ${(tmp0*100).toFixed(2)}% chance of finding no villagers you want.`);};function sFact(num){var rval=1;for (var i = 2; i <= num; i++)rval = rval * i;return rval;};
+						})();">Villager Probability Calculator</a></h2>
+						Estimated probability of finding a villager you like on a trip.<br>Note: If you go on a trip and keep the villager you find, you'll have to recalculate for the remaining trips.<br><br> Fill out the boxes below:
+				</div>
+				</div>
+				<div class ="row" style="margin: 1vw 0 0 2vw">
+					<div class="column">
+						
+						<label for="vKeep">Number of Villagers you would keep if they appear:<br></label>
+						<input id="vKeep" type="number" placeholder="36">
+					</div>
+				</div>
+				<div class ="row" style="margin: 1vw 0 0 2vw">
+					<div class="column">
+						
+						<label for="vOwned">Number of Villagers you currently have:<br></label>
+						<input id="vOwned" size="5" type="number" placeholder="8">
+					</div>
+				</div>
+				<div class ="row" style="margin: 1vw 0 0 2vw">
+					<div class="column">
+						
+						<label for="vTotal">Number of Villagers Available in the game(total): <br></label>
+						<input id="vTotal" size="5" type="number" placeholder="" value="393">
+					</div>
+				</div>
+				<div class ="row" style="margin: 1vw 0 0 2vw">
+					<div class="column">
+						
+						<label for="vTrips">Number of trips:<br></label>
+						<input id="vTrips" type="number" placeholder="6">
+					</div>
+				</div>
+				<div class ="row" style="margin: 1vw 0 0 2vw">
+					<div class="column">
+						<div style="padding-left: 2vw">
+							<button id="pCalc">Calculate</button>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div id="vProbOutcome" style="display: none"class="column">
+				<div class ="row" style="margin: 1vw 0 0 2vw">
+				<div class="column">
+					<h2 id="vProbResT">Outcome:</h2>
+						<div id="vProbResB">The estimated probability that you will find a villager you like in the next X trips is:<br><br><div id="vProbPC" style="font-size: 1.5em; margin-left: 10px">Percentage Chance:</div><div id="vProbP" style="margin: 15px 0 0 20px">P(X=1) = Y (Y*100%) <br><br> You also have a M% chance of not finding a villager you like.</div></div>
+				</div>
+				</div>
+			</div>
+		</div>
+		<script src="index.js"></script>
+	</body>
+</html>
